@@ -2,3 +2,4 @@ secrets.py
 state.sqlite
 *.pyc
 *.log
+twistd.pid
