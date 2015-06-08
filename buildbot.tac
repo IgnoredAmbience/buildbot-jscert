@@ -32,4 +32,3 @@ m.log_rotation.rotateLength = rotateLength
 m.log_rotation.maxRotatedFiles = maxRotatedFiles
 
 # TODO setup github webhook receiver daemon
-import secrets
