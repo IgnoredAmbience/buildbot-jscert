@@ -31,4 +31,15 @@ m.setServiceParent(application)
 m.log_rotation.rotateLength = rotateLength
 m.log_rotation.maxRotatedFiles = maxRotatedFiles
 
-# TODO setup github webhook receiver daemon
+from twisted.application import internet
+from twisted.web import server
+from github_buildbot_service import GitHubBuildBot
+import secrets
+gh = GitHubBuildBot()
+gh.github = 'github.com'
+gh.master = 'localhost:9989'
+gh.secret = secrets.gh_secret
+gh.auth = secrets.pbcs_user + ':' + secrets.pbcs_pass
+
+ghservice = internet.TCPServer(55081, server.Site(gh))
+ghservice.setServiceParent(application)
