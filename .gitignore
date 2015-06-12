@@ -3,3 +3,5 @@ state.sqlite
 *.pyc
 *.log
 twistd.pid
+*.socket
+*.lock

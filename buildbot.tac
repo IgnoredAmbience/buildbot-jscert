@@ -31,15 +31,3 @@ m.setServiceParent(application)
 m.log_rotation.rotateLength = rotateLength
 m.log_rotation.maxRotatedFiles = maxRotatedFiles
 
-from twisted.application import internet
-from twisted.web import server
-from github_buildbot_service import GitHubBuildBot
-import secrets
-gh = GitHubBuildBot()
-gh.github = 'github.com'
-gh.master = 'localhost:9989'
-gh.secret = secrets.gh_secret
-gh.auth = secrets.pbcs_user + ':' + secrets.pbcs_pass
-
-ghservice = internet.UNIXServer('/home/buildbot/buildbot-jscert/ghlistener.socket', server.Site(gh), wantPID=True)
-ghservice.setServiceParent(application)
