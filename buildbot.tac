@@ -41,5 +41,5 @@ gh.master = 'localhost:9989'
 gh.secret = secrets.gh_secret
 gh.auth = secrets.pbcs_user + ':' + secrets.pbcs_pass
 
-ghservice = internet.TCPServer(55081, server.Site(gh))
+ghservice = internet.UNIXServer('/home/buildbot/buildbot-jscert/ghlistener.socket', server.Site(gh), wantPID=True)
 ghservice.setServiceParent(application)

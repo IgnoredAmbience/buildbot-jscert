@@ -18,7 +18,7 @@ class SSHLatentBuildSlave(AbstractLatentBuildSlave):
     Build slave that runs a command over SSH to start and stop the build slave.
     """
 
-    def __init__(self, name, password, hostname, username, command, **kwargs):
+    def __init__(self, name, password, hostname, username, command, key_path=None, **kwargs):
         """
         Creates a new SSH latent build slave with the given parameters.
         """
@@ -29,6 +29,8 @@ class SSHLatentBuildSlave(AbstractLatentBuildSlave):
         self.hostname = hostname
         self.username = username
         self.command = command
+        self.key_path = key_path
+
         self.started = False
 
     def _connect(self):
