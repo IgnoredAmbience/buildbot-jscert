@@ -30,7 +30,7 @@ from buildbot.process.properties import Interpolate
 from buildbot.status.base import StatusReceiverMultiService
 from buildbot.status.builder import FAILURE
 from buildbot.status.builder import SUCCESS
-from buildbot.util import human_readable_delta
+from buildbot.util import human_readable_delta, Property
 
 _STATE_MAP = {
     SUCCESS: 'success',
@@ -69,7 +69,8 @@ class GitHubStatus(StatusReceiverMultiService):
 
         StatusReceiverMultiService.__init__(self)
 
-        self._sha = sha or Interpolate("%(src::revision)s")
+        self._sha = sha or Interpolate("%(src::revision)s") or \
+            Property('got_revision')
         self._repoOwner = repoOwner
         self._repoName = repoName
         self._context = context or Interpolate("buildbot/%(prop:buildername)s")
