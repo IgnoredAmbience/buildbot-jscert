@@ -5,3 +5,8 @@ state.sqlite
 twistd.pid
 *.socket
 *.lock
+
+# Builder directories
+quick-build
+build-master
+proof-master
