@@ -26,11 +26,11 @@ from zope.interface import implements
 
 from buildbot import config
 from buildbot.interfaces import IStatusReceiver
-from buildbot.process.properties import Interpolate
+from buildbot.process.properties import Interpolate, Property
 from buildbot.status.base import StatusReceiverMultiService
 from buildbot.status.builder import FAILURE
 from buildbot.status.builder import SUCCESS
-from buildbot.util import human_readable_delta, Property
+from buildbot.util import human_readable_delta
 
 _STATE_MAP = {
     SUCCESS: 'success',
